@@ -233,6 +233,20 @@ class DQN(object):
         # Hint3: You might also find https://docs.chainer.org/en/stable/reference/generated/chainer.functions.select_item.html useful
         loss = C.Variable(np.array([0.]))  # TODO: replace this line
         "*** YOUR CODE HERE ***"
+
+        # Compute Target
+        action = F.argmax(self._q.forward(l_next_obs), axis=1)
+        qt_vals = self._qt.forward(l_next_obs)
+        qt_vals = F.select_item(qt_vals, action)
+        y = l_rew + (1 - l_done) * self._discount * qt_vals
+
+        # Compute Q
+        Q = self._q.forward(l_obs)
+        Q = F.select_item(Q, l_act)
+
+        # Compute Loss
+        loss = F.mean(F.square(Q - y))
+
         return loss
 
     def train_q(self, l_obs, l_act, l_rew, l_next_obs, l_done):
