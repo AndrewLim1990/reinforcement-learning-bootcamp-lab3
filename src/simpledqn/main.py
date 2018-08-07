@@ -207,10 +207,7 @@ class DQN(object):
         "*** YOUR CODE HERE ***"
 
         # Compute Target
-        y = l_rew + self._discount * F.max(self._qt.forward(l_next_obs), axis=1)
-        for idx, is_done in enumerate(l_done):
-            if is_done == 1:
-                y.data[idx] = l_rew[idx]
+        y = l_rew + (1 - l_done) * self._discount * F.max(self._qt.forward(l_next_obs), axis=1)
 
         # Compute Q
         Q = self._q.forward(l_obs)
