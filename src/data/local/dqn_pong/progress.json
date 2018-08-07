@@ -1,0 +1,11 @@
+{"Iteration": 0, "Steps": 1019999, "Epsilon": 0.050000000000000044, "Episodes": 8, "AverageReturn": -16.125, "AverageDiscountedReturn": -0.7925853356443154, "TDError^2": 0.006456078961491585}
+{"Iteration": 1, "Steps": 1029999, "Epsilon": 0.050000000000000044, "Episodes": 11, "AverageReturn": -16.5, "AverageDiscountedReturn": -0.7503792972277604, "TDError^2": 0.005313241388648748}
+{"Iteration": 2, "Steps": 1039999, "Epsilon": 0.050000000000000044, "Episodes": 16, "AverageReturn": -17.2, "AverageDiscountedReturn": -0.4591050511336733, "TDError^2": 0.006323062349110842}
+{"Iteration": 3, "Steps": 1049999, "Epsilon": 0.050000000000000044, "Episodes": 21, "AverageReturn": -17.2, "AverageDiscountedReturn": -0.3320157278474667, "TDError^2": 0.004549053497612476}
+{"Iteration": 4, "Steps": 1059999, "Epsilon": 0.050000000000000044, "Episodes": 26, "AverageReturn": -16.6, "AverageDiscountedReturn": -0.5140390958767646, "TDError^2": 0.005657577887177467}
+{"Iteration": 5, "Steps": 1069999, "Epsilon": 0.050000000000000044, "Episodes": 30, "AverageReturn": -16.7, "AverageDiscountedReturn": -0.6766836689613493, "TDError^2": 0.006095198914408684}
+{"Iteration": 6, "Steps": 1079999, "Epsilon": 0.050000000000000044, "Episodes": 34, "AverageReturn": -16.9, "AverageDiscountedReturn": -0.6125613791048308, "TDError^2": 0.007466927170753479}
+{"Iteration": 7, "Steps": 1089999, "Epsilon": 0.050000000000000044, "Episodes": 37, "AverageReturn": -16.6, "AverageDiscountedReturn": -0.47945512802486423, "TDError^2": 0.005926079116761684}
+{"Iteration": 8, "Steps": 1099999, "Epsilon": 0.050000000000000044, "Episodes": 40, "AverageReturn": -16.2, "AverageDiscountedReturn": -0.4520355909553575, "TDError^2": 0.005203493405133486}
+{"Iteration": 9, "Steps": 1109999, "Epsilon": 0.050000000000000044, "Episodes": 43, "AverageReturn": -15.4, "AverageDiscountedReturn": -0.44540739728926537, "TDError^2": 0.004809622652828693}
+{"Iteration": 10, "Steps": 1119999, "Epsilon": 0.050000000000000044, "Episodes": 47, "AverageReturn": -14.4, "AverageDiscountedReturn": -0.47149054568342547, "TDError^2": 0.0041155689395964146}

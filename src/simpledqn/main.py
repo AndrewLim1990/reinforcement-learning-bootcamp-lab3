@@ -231,7 +231,6 @@ class DQN(object):
         # Hint: You may want to make use of the following fields: self._discount, self._q, self._qt
         # Hint2: Q-function can be called by self._q.forward(argument)
         # Hint3: You might also find https://docs.chainer.org/en/stable/reference/generated/chainer.functions.select_item.html useful
-        loss = C.Variable(np.array([0.]))  # TODO: replace this line
         "*** YOUR CODE HERE ***"
 
         # Compute Target
@@ -241,11 +240,11 @@ class DQN(object):
         y = l_rew + (1 - l_done) * self._discount * qt_vals
 
         # Compute Q
-        Q = self._q.forward(l_obs)
-        Q = F.select_item(Q, l_act)
+        q = self._q.forward(l_obs)
+        q = F.select_item(q, l_act)
 
         # Compute Loss
-        loss = F.mean(F.square(Q - y))
+        loss = F.mean_squared_error(y, q)
 
         return loss
 
