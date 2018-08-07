@@ -204,8 +204,20 @@ class DQN(object):
         # Hint: You may want to make use of the following fields: self._discount, self._q, self._qt
         # Hint2: Q-function can be called by self._q.forward(argument)
         # Hint3: You might also find https://docs.chainer.org/en/stable/reference/generated/chainer.functions.select_item.html useful
-        loss = C.Variable(np.array([0.]))  # TODO: replace this line
         "*** YOUR CODE HERE ***"
+
+        # Compute Target
+        y = l_rew + self._discount * F.max(self._qt.forward(l_next_obs), axis=1)
+        for idx, is_done in enumerate(l_done):
+            if is_done == 1:
+                y.data[idx] = l_rew[idx]
+
+        # Compute Q
+        Q = self._q.forward(l_obs)
+        Q = F.select_item(Q, l_act)
+
+        # Compute Loss
+        loss = F.mean(F.square(Q - y))
         return loss
 
     def compute_double_q_learning_loss(self, l_obs, l_act, l_rew, l_next_obs, l_done):
@@ -332,9 +344,11 @@ def main(env_id, double, render):
         from simpledqn import gridworld_env
         env = gym.make('GridWorld-v0')
 
-        def get_obs_dim(x): return x.observation_space.n
+        def get_obs_dim(x):
+            return x.observation_space.n
 
-        def get_act_dim(x): return x.action_space.n
+        def get_act_dim(x):
+            return x.action_space.n
         obs_preprocessor = preprocess_obs_gridworld
         max_steps = 100000
         log_freq = 1000
@@ -344,9 +358,11 @@ def main(env_id, double, render):
     elif env_id == 'Pong-ram-v0':
         env = EpisodicLifeEnv(NoopResetEnv(gym.make('Pong-ram-v0')))
 
-        def get_obs_dim(x): return x.observation_space.shape[0]
+        def get_obs_dim(x):
+            return x.observation_space.shape[0]
 
-        def get_act_dim(x): return x.action_space.n
+        def get_act_dim(x):
+            return x.action_space.n
         obs_preprocessor = preprocess_obs_ram
         max_steps = 10000000
         log_freq = 10000
